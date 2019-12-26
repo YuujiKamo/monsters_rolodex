@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { CardList } from './components/card-list/card-list.component.jsx';
 import './App.css';
 
 class App extends Component {
@@ -11,6 +12,7 @@ class App extends Component {
     } //end of constructor()
     
     //user Lifecycle Method to fetch data from API and use that data to render on the page
+    //waits for the page to mount before fetcthing all the data
     componentDidMount() {
       fetch('https:/jsonplaceholder.typicode.com/users')
         .then( response => response.json() )
@@ -22,11 +24,7 @@ class App extends Component {
     render() {
       return (
         <div className="App">
-            {
-              //map() seems to tranverse an array and return an element like a foreach loop
-              //key is needed so react knows exactly which element is changing if it is changed or changeable
-              this.state.monsters.map(monster => (<h1 key={monster.id}>{monster.name}</h1>))
-            }
+            <CardList monsters={ this.state.monsters } />
         </div>
       );
     }
