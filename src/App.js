@@ -18,7 +18,7 @@ class App extends Component {
     //user Lifecycle Method to fetch data from API and use that data to render on the page
     //waits for the page to mount before fetcthing all the data
     componentDidMount() {
-      fetch('https:/jsonplaceholder.typicode.com/users')
+      fetch('https://jsonplaceholder.typicode.com/users')
         .then( response => response.json() )
         .then( users => this.setState({ monsters: users }) );
     }
